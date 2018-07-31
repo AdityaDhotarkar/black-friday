@@ -47,6 +47,7 @@ lm_model_rmse <- sqrt(mean((lm_prediction-test$Purchased)^2))
 lm_model_mae <- mean(abs(lm_prediction-test$Purchased))
 
 # random forest
+library(randomforest)
 rf_model <- randomForest(Purchased ~., data = train)
 rf_prediction <- predict(rf_model, test)
 rf_model_rmse <- sqrt(mean((rf_prediction-test$Purchased)^2))
@@ -61,6 +62,7 @@ swr_rmse <- sqrt(mean((stepwise_purchase_prediction-train$Purchased)^2))
 swr_mae <- mean(abs(stepwise_purchase_prediction-train$Purchased))
 
 # rpart 
+library(rpart)
 rpart_model <- rpart(Purchased ~., train)
 rpart_prediction <- predict(rpart_model, test)
 rpart_rmse <- sqrt(mean((rpart_prediction-test$Purchased)^2))
